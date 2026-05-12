@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Acompanhe preços do Mercado Livre diretamente pelo PriceWatch.",
 
-  "permissions": ["storage"],
+  "permissions": ["storage", "tabs", "scripting"],
 
   "host_permissions": [
     "*://*.mercadolivre.com.br/*",

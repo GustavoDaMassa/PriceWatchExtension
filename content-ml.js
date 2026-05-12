@@ -63,24 +63,16 @@ function injectButton() {
 
 // ── Ação ao clicar ──────────────────────────────────────────────────────────
 
-async function handleTrack() {
+function handleTrack() {
   const btn = document.getElementById(BUTTON_ID);
-
-  const { pw_user } = await chrome.storage.local.get('pw_user');
-
-  if (!pw_user?.token) {
-    showFeedback(btn, '⚠️ Faça login no PriceWatch primeiro', 'warn');
-    return;
-  }
-
   setLoading(btn, true);
 
-  const url = getProductUrl();
-
-  chrome.runtime.sendMessage({ type: 'ADD_PRODUCT', url, token: pw_user.token }, res => {
+  chrome.runtime.sendMessage({ type: 'ADD_PRODUCT', url: getProductUrl() }, res => {
     setLoading(btn, false);
     if (res?.success) {
       showFeedback(btn, '✓ Adicionado ao PriceWatch!', 'success');
+    } else if (res?.error?.includes('login')) {
+      showFeedback(btn, '⚠️ Faça login no PriceWatch primeiro', 'warn');
     } else {
       showFeedback(btn, `✕ ${res?.error ?? 'Erro desconhecido'}`, 'error');
     }
