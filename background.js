@@ -7,10 +7,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       .then(token => token
         ? addProduct(message.url, token)
         : { success: false, error: 'Faça login no PriceWatch primeiro' })
-      .then(async res => {
-        if (res.success) await saveTracked(message.url);
-        sendResponse(res);
-      });
+      .then(sendResponse);
     return true;
   }
 });
@@ -39,13 +36,6 @@ async function resolveToken() {
     return user.token;
   }
   return null;
-}
-
-async function saveTracked(url) {
-  const { tracked = [] } = await chrome.storage.local.get('tracked');
-  if (!tracked.includes(url)) {
-    await chrome.storage.local.set({ tracked: [...tracked, url] });
-  }
 }
 
 async function addProduct(url, token) {
