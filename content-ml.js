@@ -24,28 +24,27 @@ function getProductUrl() {
 
 // ── Injeção do botão ────────────────────────────────────────────────────────
 
-function injectButton() {
+async function injectButton() {
   if (document.getElementById(BUTTON_ID)) return;
 
   const buyBox = findBuyBox();
   if (!buyBox) return;
 
+  const url = getProductUrl();
+  const { tracked = [] } = await chrome.storage.local.get('tracked');
+  const alreadyTracked = tracked.includes(url);
+
   const btn = document.createElement('button');
   btn.id = BUTTON_ID;
-  btn.textContent = 'Acompanhar com PriceWatch';
 
   Object.assign(btn.style, {
     width: '100%',
     marginTop: '8px',
     padding: '13px 16px',
-    background: '#ffffff',
-    border: '1px solid #3483FA',
     borderRadius: '6px',
-    color: '#3483FA',
     fontSize: '16px',
     fontWeight: '600',
     fontFamily: '"Proxima Nova", -apple-system, sans-serif',
-    cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -54,9 +53,27 @@ function injectButton() {
     transition: 'background 0.15s',
   });
 
-  btn.addEventListener('mouseenter', () => { btn.style.background = '#EAF0FB'; });
-  btn.addEventListener('mouseleave', () => { btn.style.background = '#ffffff'; });
-  btn.addEventListener('click', handleTrack);
+  if (alreadyTracked) {
+    btn.textContent = '✓ Já monitorando no PriceWatch';
+    btn.disabled = true;
+    Object.assign(btn.style, {
+      background: '#e8f5e9',
+      border: '1px solid #00A650',
+      color: '#00A650',
+      cursor: 'default',
+    });
+  } else {
+    btn.textContent = 'Acompanhar com PriceWatch';
+    Object.assign(btn.style, {
+      background: '#ffffff',
+      border: '1px solid #3483FA',
+      color: '#3483FA',
+      cursor: 'pointer',
+    });
+    btn.addEventListener('mouseenter', () => { btn.style.background = '#EAF0FB'; });
+    btn.addEventListener('mouseleave', () => { btn.style.background = '#ffffff'; });
+    btn.addEventListener('click', handleTrack);
+  }
 
   buyBox.appendChild(btn);
 }
@@ -70,7 +87,12 @@ function handleTrack() {
   chrome.runtime.sendMessage({ type: 'ADD_PRODUCT', url: getProductUrl() }, res => {
     setLoading(btn, false);
     if (res?.success) {
-      showFeedback(btn, '✓ Adicionado ao PriceWatch!', 'success');
+      btn.textContent = '✓ Já monitorando no PriceWatch';
+      btn.disabled = true;
+      Object.assign(btn.style, {
+        background: '#e8f5e9', border: '1px solid #00A650',
+        color: '#00A650', cursor: 'default', opacity: '1',
+      });
     } else if (res?.error?.includes('login')) {
       showFeedback(btn, '⚠️ Faça login no PriceWatch primeiro', 'warn');
     } else {
