@@ -28,6 +28,5 @@
       "js": ["content-spa.js"],
       "run_at": "document_idle"
     }
-  ],
-
+  ]
 }
