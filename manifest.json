@@ -17,6 +17,13 @@
     "service_worker": "background.js"
   },
 
+  "web_accessible_resources": [
+    {
+      "resources": ["logopw.png"],
+      "matches": ["*://*.mercadolivre.com.br/*"]
+    }
+  ],
+
   "content_scripts": [
     {
       "matches": ["*://*.mercadolivre.com.br/*"],
