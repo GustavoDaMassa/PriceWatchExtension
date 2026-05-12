@@ -4,28 +4,36 @@
   "version": "1.0.0",
   "description": "Acompanhe preços do Mercado Livre diretamente pelo PriceWatch.",
 
-  "permissions": ["storage", "tabs", "scripting"],
+  "permissions": ["storage"],
 
   "host_permissions": [
     "*://*.mercadolivre.com.br/*",
-    "http://localhost:4200/*",
-    "http://localhost:5283/*",
-    "https://api.financeapi.com.br/*"
+    "https://pricewatch-api.gustavohdev.com.br/*"
   ],
 
   "background": {
     "service_worker": "background.js"
   },
 
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/16.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  },
+
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+
   "content_scripts": [
     {
       "matches": ["*://*.mercadolivre.com.br/*"],
       "js": ["content-ml.js"],
-      "run_at": "document_idle"
-    },
-    {
-      "matches": ["http://localhost:4200/*"],
-      "js": ["content-spa.js"],
       "run_at": "document_idle"
     }
   ]
