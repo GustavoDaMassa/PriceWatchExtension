@@ -1,5 +1,4 @@
 const BUTTON_ID = 'pw-track-btn';
-const LOGO_IMG = `<img src="${chrome.runtime.getURL('logopw.png')}" style="height:20px;width:auto;vertical-align:middle;margin-right:8px;">`;
 
 // ── Selectors (ML usa Andes UI) ─────────────────────────────────────────────
 
@@ -33,7 +32,7 @@ function injectButton() {
 
   const btn = document.createElement('button');
   btn.id = BUTTON_ID;
-  btn.innerHTML = `${LOGO_IMG} Acompanhar com PriceWatch`;
+  btn.textContent = 'Acompanhar com PriceWatch';
 
   Object.assign(btn.style, {
     width: '100%',
@@ -92,7 +91,7 @@ async function handleTrack() {
 
 function setLoading(btn, loading) {
   btn.disabled = loading;
-  btn.innerHTML = loading ? 'Adicionando...' : `${LOGO_IMG} Acompanhar com PriceWatch`;
+  btn.textContent = loading ? 'Adicionando...' : 'Acompanhar com PriceWatch';
   btn.style.opacity = loading ? '0.7' : '1';
   btn.style.cursor = loading ? 'not-allowed' : 'pointer';
 }
@@ -111,7 +110,7 @@ function showFeedback(btn, text, type) {
 
   setTimeout(() => {
     if (type !== 'success') {
-      btn.innerHTML = `${LOGO_IMG} Acompanhar com PriceWatch`;
+      btn.textContent = 'Acompanhar com PriceWatch';
       btn.style.background = '#ffffff';
       btn.style.borderColor = '#3483FA';
       btn.style.color = '#3483FA';
