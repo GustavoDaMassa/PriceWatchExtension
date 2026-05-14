@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade — PriceWatch</title>
+  <style>
+    body { font-family: sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.7; color: #333; }
+    h1 { font-size: 24px; margin-bottom: 8px; }
+    h2 { font-size: 17px; margin-top: 28px; margin-bottom: 6px; }
+    p, li { font-size: 15px; margin-bottom: 8px; }
+    ul { padding-left: 20px; }
+    .updated { color: #888; font-size: 13px; margin-bottom: 32px; }
+  </style>
+</head>
+<body>
+  <h1>Política de Privacidade</h1>
+  <p class="updated">Última atualização: maio de 2026</p>
+
+  <p>
+    A extensão <strong>PriceWatch — Monitor de Preços</strong> ("a extensão") é desenvolvida e mantida por Gustavo Henrique.
+    Esta política explica quais dados são coletados, como são usados e como são protegidos.
+  </p>
+
+  <h2>1. Dados coletados</h2>
+  <ul>
+    <li><strong>Credenciais de acesso:</strong> e-mail e senha fornecidos voluntariamente no popup da extensão para autenticação na plataforma PriceWatch.</li>
+    <li><strong>Token de autenticação (JWT):</strong> gerado após o login bem-sucedido e armazenado localmente no dispositivo do usuário via <code>chrome.storage.local</code>.</li>
+    <li><strong>URLs de produtos:</strong> a URL canônica da página do Mercado Livre visitada pelo usuário, enviada à API do PriceWatch somente quando o botão "Acompanhar" é acionado.</li>
+  </ul>
+
+  <h2>2. Como os dados são usados</h2>
+  <ul>
+    <li>As credenciais são transmitidas à API do PriceWatch exclusivamente para autenticação. Não são armazenadas localmente além do token JWT resultante.</li>
+    <li>O token JWT é usado para autorizar as chamadas à API e é mantido apenas no armazenamento local do Chrome do próprio usuário.</li>
+    <li>As URLs de produtos são enviadas à API para cadastro e monitoramento de preços, conforme solicitado explicitamente pelo usuário.</li>
+  </ul>
+
+  <h2>3. Compartilhamento de dados</h2>
+  <p>Nenhum dado é vendido, alugado ou compartilhado com terceiros. Os dados trafegam exclusivamente entre o dispositivo do usuário e a API do PriceWatch (<code>pricewatch-api.gustavohdev.com.br</code>).</p>
+
+  <h2>4. Armazenamento e segurança</h2>
+  <ul>
+    <li>O token JWT é armazenado em <code>chrome.storage.local</code>, acessível apenas pela própria extensão.</li>
+    <li>Toda comunicação com a API utiliza HTTPS.</li>
+    <li>O token tem validade limitada e é removido automaticamente ao expirar ou ao usuário fazer logout.</li>
+  </ul>
+
+  <h2>5. Direitos do usuário</h2>
+  <p>O usuário pode remover todos os dados armazenados pela extensão a qualquer momento clicando em "Sair" no popup ou desinstalando a extensão.</p>
+
+  <h2>6. Contato</h2>
+  <p>Dúvidas sobre esta política: <a href="mailto:gustavohenrique3gb@gmail.com">gustavohenrique3gb@gmail.com</a></p>
+</body>
+</html>

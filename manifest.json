@@ -1,8 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "PriceWatch",
+  "name": "PriceWatch — Monitor de Preços",
   "version": "1.0.0",
-  "description": "Acompanhe preços do Mercado Livre diretamente pelo PriceWatch.",
+  "description": "Acompanhe preços do Mercado Livre diretamente pelo PriceWatch. Clique em 'Acompanhar' na página do produto e receba alertas por e-mail quando o preço atingir sua meta.",
+
+  "minimum_chrome_version": "88",
 
   "permissions": ["storage"],
 
@@ -10,6 +12,10 @@
     "*://*.mercadolivre.com.br/*",
     "https://pricewatch-api.gustavohdev.com.br/*"
   ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
 
   "background": {
     "service_worker": "background.js"
