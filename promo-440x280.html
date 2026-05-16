@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 440px;
+      height: 280px;
+      overflow: hidden;
+      background: #0d0d1a;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .banner {
+      width: 440px;
+      height: 280px;
+      background: #0d0d1a;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* glow de fundo */
+    .banner::before {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* lado esquerdo — logo */
+    .left {
+      width: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-wrap {
+      width: 110px;
+      height: 110px;
+      border-radius: 22px;
+      background: #1a1a2e;
+      border: 2px solid rgba(255, 215, 0, 0.25);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-wrap img {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+    }
+
+    /* divisor */
+    .divider {
+      width: 1px;
+      height: 160px;
+      background: linear-gradient(to bottom, transparent, rgba(255,215,0,0.3), transparent);
+      flex-shrink: 0;
+    }
+
+    /* lado direito — texto */
+    .right {
+      flex: 1;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffd700;
+      letter-spacing: 0.5px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .tagline {
+      font-size: 13px;
+      color: #a0a0b0;
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
+
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #d0d0e0;
+      line-height: 1.3;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ffd700;
+      flex-shrink: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <div class="left">
+      <div class="logo-wrap">
+        <img src="icons/128.png" alt="PriceWatch" />
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="right">
+      <div class="brand">PriceWatch</div>
+      <div class="tagline">Monitore preços do<br>Mercado Livre automaticamente</div>
+      <div class="features">
+        <div class="feature"><div class="dot"></div>Adicione produtos com 1 clique</div>
+        <div class="feature"><div class="dot"></div>Receba alertas quando o preço cair</div>
+        <div class="feature"><div class="dot"></div>Histórico de preços por produto</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
