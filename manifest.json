@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "PriceWatch — Monitor de Preços",
-  "version": "1.0.0",
-  "description": "Acompanhe preços do Mercado Livre diretamente pelo PriceWatch. Clique em 'Acompanhar' na página do produto e receba alertas por e-mail quando o preço atingir sua meta.",
+  "version": "1.1.0",
+  "description": "Acompanhe preços do Mercado Livre e receba alertas quando o produto atingir seu preço-alvo. Um clique para acompanhar.",
 
   "minimum_chrome_version": "88",
 
